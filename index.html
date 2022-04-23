@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serie de fibonacci</title>
+</head>
+<body>
+    <!-- agrego los estilo para parcer al cuadro que mando el profesor -->
+    <style>
+   /*      *{
+            border: 1px solid black;
+        } */
+        #cuadro{
+            display: flex;
+            
+            width: 40%;
+            background: rgb(239, 239, 239);
+            position: relative;
+        }
+        form{
+            margin: 5%;
+            
+        }
+        h2{
+            font-size: 35px;
+        }
+        #arriba{
+            padding: 1%;
+        }
+        #abajo{
+            padding: 1%;
+            text-align: end;
+        }
+        #boton{
+            background: red;
+            width: 50%;
+            font-size: 20px;
+            color: rgb(212, 212, 212);
+        }
+        #prueba{
+            width: 10%;
+            color: rgb(110, 109, 109);
+            background: aliceblue;
+            text-align: center;
+            font-size: 20px;
+            margin: 2%;
+            box-shadow: 0px 0px 5px 1px black;
+            border: none;
+        }
+        #prueba:hover{
+            background: rgb(110, 109, 109);
+            color: aliceblue;
+        }
+    </style>
+    <!-- agrego una seccion para el cuadro -->
+    <section id="cuadro">               
+        <!-- creo el formulario -->
+        <form id="form">   
+            <!-- divido la parte de input y label en un div llamado arriba       -->
+            <div id="arriba">
+             <!-- agrego el titulo del cuadro -->
+            <h2>Secuencia Fibonacci</h2>               
+            <label for="">Cantidad de elementos</label>
+            <input type="number" name="nume" id="nume">
+            </div>
+            <!-- el boton lo dejo en un div llamado abajo -->
+            <div id="abajo">
+                <input id="boton" type="button" value="Calcular" onclick="calcular()" >
+            </div>
+        </form>
+    </section>
+   <!-- creo la funciones del JavaScript. -->
+    <script>
+        //creo una funcion llamada calcular con el que are el procedimiento del problema 1
+        function calcular() {
+            var nume = Number(document.getElementById('nume').value);
+            var n1 = 0;
+            var n2 =1;
+            var input = document.createElement("input");
+            //imprimero los 2 primero numero 
+            input.setAttribute("type","text");
+                input.setAttribute("id","prueba");
+                input.setAttribute("value",n1);            
+                $ =document.querySelector("#form");
+                $.appendChild(input);
+            input.setAttribute("type","text");
+                input.setAttribute("id","prueba");
+                input.setAttribute("value",n2);            
+                $ =document.querySelector("#form");
+                $.appendChild(input);
+
+            for (let index = 0; index < nume-2; index++) {
+                //sumo los numero y actualizo la informacion de la anterior variables
+                var res= n1+n2;
+                n1 =n2;
+                n2 =res;
+                //imprimo el resultado de la sumatoria
+                var input = document.createElement("input");
+                input.setAttribute("type","text");
+                input.setAttribute("id","prueba");
+                input.setAttribute("value",res);
+                input.setAttribute("onclick","eliminar()");            
+                $ =document.querySelector("#form");
+                $.appendChild(input);
+            }            
+        }
+        function eliminar() {
+            var respuesta = confirm("deseas eliminar?");
+            if (respuesta==true) {
+                $ =document.querySelector("#prueba");
+                $.remove();
+            }else{
+                return false;
+            }
+                    
+        }
+    </script>
+</body>
+</html>
